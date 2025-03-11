@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All About You Wellness - Reflexology Client Intake Form</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // Replace with your actual EmailJS public key
+            emailjs.init(V-KGyeu2NIsY7pYO4);
+        })();
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .print-view {
+            display: none;
+            background: white;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #2c5282;
+            text-align: center;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="tel"], input[type="date"], input[type="email"], textarea, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        textarea {
+            height: 80px;
+        }
+        .checkbox-group {
+            margin-bottom: 15px;
+        }
+        .checkbox-item {
+            margin-bottom: 5px;
+        }
+        .checkbox-label {
+            font-weight: normal;
+            display: inline;
+            margin-left: 5px;
+        }
+        .signature-section {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        .important-note {
+            background-color: #f8f4e3;
+            padding: 10px;
+            border-left: 4px solid #e2c87a;
+            margin-bottom: 20px;
+        }
+        .checkbox-inline {
+            display: inline-block;
+            margin-right: 15px;
+        }
+        .btn-submit {
+            background-color: #2c5282;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 20px auto;
+        }
+        .btn-submit:hover {
+            background-color: #1a365d;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #666;
+        }
+        .print-only {
+            display: none;
+        }
+        .filled-value {
+            font-weight: normal;
+            padding: 6px;
+            margin-top: 4px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+        }
+        @media print {
+            .no-print {
+                display: none;
+            }
+            .print-only {
+                display: block;
+            }
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+            body {
+                padding: 0;
+            }
+            .print-view {
+                display: block;
+            }
+            .form-view {
+                display: none;
+            }
+        }
+        .form-view {
+            display: block;
+        }
+        .instructions {
+            background-color: #e6f7ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #1890ff;
+        }
+        .btn-print {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .btn-back {
+            background-color: #6c757d;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: inline-block;
+        }
+        .hidden {
+            display: none;
+        }
+        
+        /* Adding styles for email functionality */
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+        
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 2s linear infinite;
+            margin: 20px auto;
+            display: none;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- FORM VIEW -->
+        <div class="form-view" id="form-view">
+            <div class="header">
+                <h1>All About You Wellness</h1>
+                <h2>Tami Goulet, NBCR</h2>
+                <p>2180 Mendon Rd, Cumberland, RI 02864</p>
+                <p>401-374-7515</p>
+            </div>
+
+            <div class="instructions no-print">
+                <h3>Instructions</h3>
+                <p>1. Fill out all required fields in this form.</p>
+                <p>2. Click the "Submit Form" button when complete.</p>
+                <p>3. The form will be automatically sent to the practitioner.</p>
+                <p>4. You'll also have the option to save a PDF copy for your records.</p>
+            </div>
+
+            <form id="reflexologyForm">
+                <div class="section">
+                    <h3>To The Clients of Reflexology</h3>
+                    <div class="important-note" style="overflow: visible; page-break-inside: avoid;">
+                        <p><strong>You need to know:</strong></p>
+                        <ol style="margin-left: 20px; padding-left: 20px;">
+                            <li>I am not a doctor.</li>
+                            <li>I do not practice medicine.</li>
+                            <li>I do not diagnose or treat for a specific problem.</li>
+                            <li>I do not prescribe or adjust medications.</li>
+                        </ol>
+                    </div>
+
+                    <div>
+                        <p><strong>What is Reflexology?</strong></p>
+                        <p>Reflexologists believe the entire body is mirrored on the feet and hands through a system of reflexes. Reflexology is the application of pressure to the reflex areas. A primary benefit of reflexology is relaxation. Discomfort at a particular place may indicate stress at a reflex point. Relaxation through reflexology may help the body balance any kind of stress it is experiencing.</p>
+                        
+                        <p><strong>What does Reflexology do?</strong></p>
+                        <ol>
+                            <li>It promotes balance and normalization of the body naturally.</li>
+                            <li>It reduces stress and brings about relaxation.</li>
+                            <li>It improves circulation and the delivery of oxygen and nutrients to the cells.</li>
+                        </ol>
+                        
+                        <div class="important-note">
+                            <p><strong>Reflexology is not a substitute for medical care. If you are experiencing any specific medical problem and have not seen your medical doctor, I recommend you do so.</strong></p>
+                        </div>
+                        
+                        <div class="signature-section">
+                            <div class="form-group">
+                                <label for="signature1">Digital Signature:</label>
+                                <input type="text" id="signature1" name="signature1" placeholder="Type your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="date1">Date:</label>
+                                <input type="date" id="date1" name="date1" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h3>New Reflexology Client Information</h3>
+                    
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="date">Date:</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Street Address:</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="city">City:</label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="state">State:</label>
+                        <input type="text" id="state" name="state" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="zip">Zip:</label>
+                        <input type="text" id="zip" name="zip" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="homePhone">Home Phone:</label>
+                        <input type="tel" id="homePhone" name="homePhone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bestNumber">Best Number to reach you prior to an appointment (cell or work):</label>
+                        <input type="tel" id="bestNumber" name="bestNumber" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dob">Date of Birth:</label>
+                        <input type="date" id="dob" name="dob" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="healthCondition">What is the present condition of your health?</label>
+                        <input type="text" id="healthCondition" name="healthCondition" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastDoctorVisit">When did you last see your doctor?</label>
+                        <input type="text" id="lastDoctorVisit" name="lastDoctorVisit" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reasonForVisit">For what:</label>
+                        <input type="text" id="reasonForVisit" name="reasonForVisit" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="allergies">Do you have any allergies?</label>
+                        <input type="text" id="allergies" name="allergies">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="otherTherapies">Are you currently participating in other therapies besides conventional medicine? (i.e. Massage, energy work, acupuncture)</label>
+                        <input type="text" id="otherTherapies" name="otherTherapies">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="feetProblems">Are you experiencing any problems with your feet?</label>
+                        <input type="text" id="feetProblems" name="feetProblems">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="priorReflexology">Have you ever had a reflexology session before?</label>
+                        <input type="text" id="priorReflexology" name="priorReflexology">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="brokenBones">Have you ever had any broken bones?</label>
+                        <input type="text" id="brokenBones" name="brokenBones">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="surgeries">Have you had any surgeries or are missing any organs?</label>
+                        <input type="text" id="surgeries" name="surgeries">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Please check if you have any of the conditions listed:</label>
+                        
+                        <div class="checkbox-group">
+                            <div class="checkbox-inline">
+                                <input type="checkbox" id="highBloodPressure" name="highBloodPressure">
+                                <label for="highBloodPressure" class="checkbox-label">High blood pressure</label>
+                            </div>
+                            
+                            <div class="checkbox-inline">
+                                <input type="checkbox" id="plantarWarts" name="plantarWarts">
+                                <label for="plantarWarts" class="checkbox-label">Plantar Warts</label>
+                            </div>
+                            
+                            <div class="checkbox-inline">
+                                <input type="checkbox" id="athletesFoot" name="athletesFoot">
+                                <label for="athletesFoot" class="checkbox-label">Athlete's Foot</label>
+                            </div>
+                            
+                            <div class="checkbox-inline">
+                                <input type="checkbox" id="diabetes" name="diabetes">
+                                <label for="diabetes" class="checkbox-label">Diabetes</label>
+                            </div>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <div class="checkbox-inline">
+                                <input type="checkbox" id="corns" name="corns">
+                                <label for="corns" class="checkbox-label">Corns</label>
+                            </div>
+                            
+                            <div class="checkbox-inline">
+                                <input type="checkbox" id="bunions" name="bunions">
+                                <label for="bunions" class="checkbox-label">Bunions</label>
+                            </div>
+                            
+                            <div class="checkbox-inline">
+                                <input type="checkbox" id="pregnant" name="pregnant">
+                                <label for="pregnant" class="checkbox-label">Pregnant</label>
+                                <input type="text" id="trimester" name="trimester" placeholder="What trimester?" style="width: 150px; margin-left: 10px;">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="whyReflexology">Why are you trying reflexology?</label>
+                        <textarea id="whyReflexology" name="whyReflexology" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="howHeard">How did you hear about me?</label>
+                        <input type="text" id="howHeard" name="howHeard" required>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h3>Unlicensed Health Care Bill of Rights</h3>
+                    <p>In June of 2002, the Health Freedom Act was passed in RI. It legalizes the practice of unlicensed health care practitioners in RI. It also requires that the client of such therapies, have the following information available to him/her.</p>
+                    
+                    <p><strong>"The State of RI has not adopted any educational and training standards for unlicensed health care practitioners."</strong> This statement of credentials is for information purposes only.</p>
+                    
+                    <p>Under RI law, an unlicensed health care practitioner may not provide a medical diagnosis. If you desire a diagnosis from a licensed physician, chiropractor, or acupuncture practitioner, or services from a physician, chiropractor, nurse, osteopath, physical therapist, dietician, nutritionist, acupuncture practitioner, athletic trainer, or any other type of health care provider, you may seek such services at any time.</p>
+                    
+                    <ol>
+                        <li>You can file a complaint with the practitioner's supervisor; please direct complaints to All About You Wellness, 2180 Mendon Rd, Cumberland, RI.<br>You can also file your complaint with the RI Dept. of Health, Cannon Bldg., Capitol Hill, Providence, RI 02908, 401-222-2231</li>
+                        <li>The cost for a reflexology session is $75 to be paid at the time of scheduled appointment, unless other arrangements have been made prior to the session.</li>
+                        <li>You have the right to reasonable notice in changes in services or charges.</li>
+                        <li>Reflexology is a complementary, non invasive therapy using a gentle, but firm pressure to stimulate reflex areas found on the feet. Approximately 7500 nerve endings form these reflex areas that correspond to every part of the body. The reflexologist applies thumb, finger, and hand pressure to these reflex points, working the seven systems of the body. The body's immune system is stimulated, activating the body's own healing powers.</li>
+                        <li>You have the right to complete and current information regarding the practitioner's assessment and recommended service that is to be provided, including the expected duration of the service to be provided.</li>
+                        <li>You can expect to be free from verbal, physical, or sexual abuse by the practitioner.</li>
+                        <li>All of your records and transactions with the practitioner are confidential, unless release of the records in writing by the client, or otherwise provided by the law.</li>
+                        <li>You have the right to access the records and written information from records in accordance with the provisions of this chapter.</li>
+                        <li>You have the right to choose freely among available practitioners and to change practitioners after services have begun, within the limits of health insurance, medical assistance, or other health programs.</li>
+                        <li>You have the right to a coordinated transfer when there will be a change in the provider of services.</li>
+                        <li>You may refuse services or treatment, unless otherwise provided by law.</li>
+                        <li>You may assert your rights as a client without retaliation.</li>
+                    </ol>
+                    
+                    <div class="signature-section">
+                        <p>I have read and understand the Health Care Bill of Rights</p>
+                        <div class="form-group">
+                            <label for="signature2">Digital Signature:</label>
+                            <input type="text" id="signature2" name="signature2" placeholder="Type your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="date2">Date:</label>
+                            <input type="date" id="date2" name="date2" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h3>Appointment Agreement</h3>
+                    
+                    <p>As your Reflexologist, I agree to be here for your appointment, on time and prepared. If, an emergency occurs, and I am forced to cancel, I will give you as much notice as possible. I understand that life happens, and that is why I am implementing this policy. Please understand that this is my business and the way I earn money for my family.</p>
+                    
+                    <p>In signing this, you, the client, are agreeing to the following terms. All cancellations must be made at least 24 hours in advance.</p>
+                    
+                    <p><strong>If you cancel less than 24 hours:</strong></p>
+                    <ol>
+                        <li>The first time will be excused.</li>
+                        <li>The second occurrence will incur a $35 fee.</li>
+                        <li>The third occurrence will incur the full $75 fee and could result in the inability to rebook.</li>
+                    </ol>
+                    
+                    <p>I appreciate your business and your attention to this matter.</p>
+                    
+                    <div class="signature-section">
+                        <div class="form-group">
+                            <label for="signature3">Digital Signature:</label>
+                            <input type="text" id="signature3" name="signature3" placeholder="Type your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="date3">Date:</label>
+                            <input type="date" id="date3" name="date3" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Your Email Address:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                </div>
+                
+                <button type="button" class="btn-submit" onclick="submitForm()">Submit Form</button>
+            </form>
+
+            <!-- Success Message -->
+            <div id="success-message" class="success-message">
+                Your form has been submitted successfully and emailed to the practitioner!
+            </div>
+            
+            <!-- Error Message -->
+            <div id="error-message" class="error-message">
+                There was a problem submitting your form. Please try again or contact us directly.
+            </div>
+            
+            <!-- Loading Spinner -->
+            <div id="spinner" class="spinner"></div>
+        </div>
+
+        <!-- PRINT VIEW -->
+        <div class="print-view" id="print-view">
+            <div class="header">
+                <h1>All About You Wellness</h1>
+                <h2>Tami Goulet, NBCR</h2>
+                <p>2180 Mendon Rd, Cumberland, RI 02864</p>
+                <p>401-374-7515</p>
+            </div>
+
+            <div class="no-print">
+                <h3>Form Submitted Successfully</h3>
+                <p>Your form has been submitted and sent to the practitioner.</p>
+                <p>You can save a copy for your records:</p>
+                <button class="btn-print" onclick="generatePDF()">Save as PDF</button>
+                <button class="btn-back" onclick="goBackToForm()">Return to Form</button>
+            </div>
+            
+            <div class="section">
+                <h3>To The Clients of Reflexology</h3>
+                <div class="important-note" style="overflow: visible; page-break-inside: avoid;">
+                    <p><strong>You need to know:</strong></p>
+                    <ol style="margin-left: 20px; padding-left: 20px;">
+                        <li>I am not a doctor.</li>
+                        <li>I do not practice medicine.</li>
+                        <li>I do not diagnose or treat for a specific problem.</li>
+                        <li>I do not prescribe or adjust medications.</li>
+                    </ol>
+                </div>
+
+                <p><strong>What is Reflexology?</strong></p>
+                <p>Reflexologists believe the entire body is mirrored on the feet and hands through a system of reflexes. Reflexology is the application of pressure to the reflex areas. A primary benefit of reflexology is relaxation. Discomfort at a particular place may indicate stress at a reflex point. Relaxation through reflexology may help the body balance any kind of stress it is experiencing.</p>
+                
+                <p><strong>What does Reflexology do?</strong></p>
+                <ol>
+                    <li>It promotes balance and normalization of the body naturally.</li>
+                    <li>It reduces stress and brings about relaxation.</li>
+                    <li>It improves circulation and the delivery of oxygen and nutrients to the cells.</li>
+                </ol>
+                
+                <div class="signature-section">
+                    <p><strong>Digital Signature:</strong> <span id="print-signature1" class="filled-value"></span></p>
+                    <p><strong>Date:</strong> <span id="print-date1" class="filled-value"></span></p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h3>Client Information</h3>
+                
+                <p><strong>Name:</strong> <span id="print-name" class="filled-value"></span></p>
+                <p><strong>Date:</strong> <span id="print-date" class="filled-value"></span></p>
+                <p><strong>Address:</strong> <span id="print-address" class="filled-value"></span></p>
+                <p><strong>City:</strong> <span id="print-city" class="filled-value"></span></p>
+                <p><strong>State:</strong> <span id="print-state" class="filled-value"></span></p>
+                <p><strong>Zip:</strong> <span id="print-zip" class="filled-value"></span></p>
+                <p><strong>Home Phone:</strong> <span id="print-homePhone" class="filled-value"></span></p>
+                <p><strong>Best Contact Number:</strong> <span id="print-bestNumber" class="filled-value"></span></p>
+                <p><strong>Date of Birth:</strong> <span id="print-dob" class="filled-value"></span></p>
+                <p><strong>Present Health Condition:</strong> <span id="print-healthCondition" class="filled-value"></span></p>
+                <p><strong>Last Doctor Visit:</strong> <span id="print-lastDoctorVisit" class="filled-value"></span></p>
+                <p><strong>Reason for Visit:</strong> <span id="print-reasonForVisit" class="filled-value"></span></p>
+                <p><strong>Allergies:</strong> <span id="print-allergies" class="filled-value"></span></p>
+                <p><strong>Other Therapies:</strong> <span id="print-otherTherapies" class="filled-value"></span></p>
+                <p><strong>Feet Problems:</strong> <span id="print-feetProblems" class="filled-value"></span></p>
+                <p><strong>Prior Reflexology Experience:</strong> <span id="print-priorReflexology" class="filled-value"></span></p>
+                <p><strong>Broken Bones:</strong> <span id="print-brokenBones" class="filled-value"></span></p>
+                <p><strong>Surgeries or Missing Organs:</strong> <span id="print-surgeries" class="filled-value"></span></p>
+                
+                <p><strong>Medical Conditions:</strong></p>
+                <ul id="print-conditions"></ul>
+                
+                <p><strong>Why Trying Reflexology:</strong> <span id="print-whyReflexology" class="filled-value"></span></p>
+                <p><strong>How You Heard About Us:</strong> <span id="print-howHeard" class="filled-value"></span></p>
+            </div>
+            
+            <div class="section">
+                <h3>Health Care Bill of Rights Acknowledgement</h3>
+                
+                <p>I have read and understand the Health Care Bill of Rights</p>
+                <p><strong>Digital Signature:</strong> <span id="print-signature2" class="filled-value"></span></p>
+                <p><strong>Date:</strong> <span id="print-date2" class="filled-value"></span></p>
+            </div>
+            
+            <div class="section">
+                <h3>Appointment Agreement</h3>
+                
+                <p>I understand and agree to the cancellation policy:</p>
+                <ol>
+                    <li>First cancellation (less than 24 hours) - Excused</li>
+                    <li>Second cancellation (less than 24 hours) - $35 fee</li>
+                    <li>Third cancellation (less than 24 hours) - $75 fee and possible inability to rebook</li>
+                </ol>
+                
+                <p><strong>Digital Signature:</strong> <span id="print-signature3" class="filled-value"></span></p>
+                <p><strong>Date:</strong> <span id="print-date3" class="filled-value"></span></p>
+            </div>
+            
+            <p><strong>Client Email:</strong> <span id="print-email" class="filled-value"></span></p>
+            
+            <div class="footer">
+                <p>All About You Wellness | Tami Goulet, NBCR | 2180 Mendon Rd, Cumberland, RI 02864 | 401-374-7515</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initially hide the print view
+        document.getElementById('print-view').style.display = 'none';
+        
+        // Format date from yyyy-mm-dd to mm/dd/yyyy
+        function formatDate(dateString) {
+            if (!dateString) return '';
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US');
+        }
+        
+        function submitForm() {
+            // Validate the form
+            if (!validateForm()) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Show spinner
+            document.getElementById('spinner').style.display = 'block';
+            document.getElementById('success-message').style.display = 'none';
+            document.getElementById('error-message').style.display = 'none';
+            
+            // Transfer form data to the print view
+            populatePrintView();
+            
+            // Prepare data for EmailJS
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                date: formatDate(document.getElementById('date').value),
+                address: document.getElementById('address').value,
+                city: document.getElementById('city').value,
+                state: document.getElementById('state').value,
+                zip: document.getElementById('zip').value,
+                homePhone: document.getElementById('homePhone').value || 'N/A',
+                bestNumber: document.getElementById('bestNumber').value,
+                dob: formatDate(document.getElementById('dob').value),
+                healthCondition: document.getElementById('healthCondition').value,
+                lastDoctorVisit: document.getElementById('lastDoctorVisit').value,
+                reasonForVisit: document.getElementById('reasonForVisit').value,
+                allergies: document.getElementById('allergies').value || 'None',
+                otherTherapies: document.getElementById('otherTherapies').value || 'None',
+                feetProblems: document.getElementById('feetProblems').value || 'None',
+                priorReflexology: document.getElementById('priorReflexology').value || 'None',
+                brokenBones: document.getElementById('brokenBones').value || 'None',
+                surgeries: document.getElementById('surgeries').value || 'None',
+                whyReflexology: document.getElementById('whyReflexology').value,
+                howHeard: document.getElementById('howHeard').value,
+                signature1: document.getElementById('signature1').value,
+                signature2: document.getElementById('signature2').value,
+                signature3: document.getElementById('signature3').value,
+                date1: formatDate(document.getElementById('date1').value),
+                date2: formatDate(document.getElementById('date2').value),
+                date3: formatDate(document.getElementById('date3').value)
+            };
+            
+            // Add medical conditions
+            let conditions = [];
+            if (document.getElementById('highBloodPressure').checked) conditions.push('High Blood Pressure');
+            if (document.getElementById('plantarWarts').checked) conditions.push('Plantar Warts');
+            if (document.getElementById('athletesFoot').checked) conditions.push('Athlete\'s Foot');
+            if (document.getElementById('diabetes').checked) conditions.push('Diabetes');
+            if (document.getElementById('corns').checked) conditions.push('Corns');
+            if (document.getElementById('bunions').checked) conditions.push('Bunions');
+            if (document.getElementById('pregnant').checked) {
+                const trimester = document.getElementById('trimester').value;
+                conditions.push(`Pregnant${trimester ? ' - ' + trimester : ''}`);
+            }
+            formData.conditions = conditions.length > 0 ? conditions.join(', ') : 'None';
+            
+            // Send email using EmailJS
+            emailjs.send(
+                service_tgr0pzg, // Replace with your actual EmailJS service ID
+                template_4o5447l, // Replace with your actual EmailJS template ID
+                formData
+            )
+            .then(function(response) {
+                console.log('Email sent successfully:', response);
+                // Hide spinner
+                document.getElementById('spinner').style.display = 'none';
+                
+                // Show success message
+                document.getElementById('success-message').style.display = 'block';
+                
+                // Show print view for PDF generation
+                document.getElementById('form-view').style.display = 'none';
+                document.getElementById('print-view').style.display = 'block';
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+                
+                // Generate PDF automatically (optional)
+                // generatePDF();
+            })
+            .catch(function(error) {
+                console.error('Email sending failed:', error);
+                // Hide spinner
+                document.getElementById('spinner').style.display = 'none';
+                
+                // Show error message
+                document.getElementById('error-message').style.display = 'block';
+            });
+        }
+        
+        function goBackToForm() {
+            // Show form, hide print view
+            document.getElementById('form-view').style.display = 'block';
+            document.getElementById('print-view').style.display = 'none';
+        }
+        
+        function validateForm() {
+            const requiredFields = document.querySelectorAll('[required]');
+            for (let field of requiredFields) {
+                if (!field.value) {
+                    field.scrollIntoView();
+                    field.focus();
+                    return false;
+                }
+            }
+            return true;
+        }
+        
+        function populatePrintView() {
+            // Simple text fields
+            document.getElementById('print-signature1').textContent = document.getElementById('signature1').value;
+            document.getElementById('print-date1').textContent = formatDate(document.getElementById('date1').value);
+            document.getElementById('print-name').textContent = document.getElementById('name').value;
+            document.getElementById('print-date').textContent = formatDate(document.getElementById('date').value);
+            document.getElementById('print-address').textContent = document.getElementById('address').value;
+            document.getElementById('print-city').textContent = document.getElementById('city').value;
+            document.getElementById('print-state').textContent = document.getElementById('state').value;
+            document.getElementById('print-zip').textContent = document.getElementById('zip').value;
+            document.getElementById('print-homePhone').textContent = document.getElementById('homePhone').value || 'N/A';
+            document.getElementById('print-bestNumber').textContent = document.getElementById('bestNumber').value;
+            document.getElementById('print-dob').textContent = formatDate(document.getElementById('dob').value);
+            document.getElementById('print-healthCondition').textContent = document.getElementById('healthCondition').value;
+            document.getElementById('print-lastDoctorVisit').textContent = document.getElementById('lastDoctorVisit').value;
+            document.getElementById('print-reasonForVisit').textContent = document.getElementById('reasonForVisit').value;
+            document.getElementById('print-allergies').textContent = document.getElementById('allergies').value || 'None';
+            document.getElementById('print-otherTherapies').textContent = document.getElementById('otherTherapies').value || 'None';
+            document.getElementById('print-feetProblems').textContent = document.getElementById('feetProblems').value || 'None';
+            document.getElementById('print-priorReflexology').textContent = document.getElementById('priorReflexology').value || 'None';
+            document.getElementById('print-brokenBones').textContent = document.getElementById('brokenBones').value || 'None';
+            document.getElementById('print-surgeries').textContent = document.getElementById('surgeries').value || 'None';
+            document.getElementById('print-whyReflexology').textContent = document.getElementById('whyReflexology').value;
+            document.getElementById('print-howHeard').textContent = document.getElementById('howHeard').value;
+            document.getElementById('print-signature2').textContent = document.getElementById('signature2').value;
+            document.getElementById('print-date2').textContent = formatDate(document.getElementById('date2').value);
+            document.getElementById('print-signature3').textContent = document.getElementById('signature3').value;
+            document.getElementById('print-date3').textContent = formatDate(document.getElementById('date3').value);
+            document.getElementById('print-email').textContent = document.getElementById('email').value;
+            
+            // Handle checkboxes
+            const conditions = [];
+            if (document.getElementById('highBloodPressure').checked) conditions.push('High Blood Pressure');
+            if (document.getElementById('plantarWarts').checked) conditions.push('Plantar Warts');
+            if (document.getElementById('athletesFoot').checked) conditions.push('Athlete\'s Foot');
+            if (document.getElementById('diabetes').checked) conditions.push('Diabetes');
+            if (document.getElementById('corns').checked) conditions.push('Corns');
+            if (document.getElementById('bunions').checked) conditions.push('Bunions');
+            if (document.getElementById('pregnant').checked) {
+                const trimester = document.getElementById('trimester').value;
+                conditions.push(`Pregnant${trimester ? ' - ' + trimester : ''}`);
+            }
+            
+            const conditionsList = document.getElementById('print-conditions');
+            conditionsList.innerHTML = '';
+            if (conditions.length === 0) {
+                const li = document.createElement('li');
+                li.textContent = 'None indicated';
+                conditionsList.appendChild(li);
+            } else {
+                conditions.forEach(condition => {
+                    const li = document.createElement('li');
+                    li.textContent = condition;
+                    conditionsList.appendChild(li);
+                });
+            }
+        }
+        
+        function generatePDF() {
+            const element = document.getElementById('print-view');
+            const opt = {
+                margin: [10, 10, 10, 10],
+                filename: 'Reflexology_Intake_Form.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true, logging: true },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+            };
+            
+            // Hide the no-print elements temporarily
+            const noPrintElements = document.querySelectorAll('.no-print');
+            noPrintElements.forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            // Generate PDF
+            html2pdf().set(opt).from(element).save().then(() => {
+                // Show the no-print elements again
+                noPrintElements.forEach(el => {
+                    el.style.display = 'block';
+                });
+            });
+        }
+    </script>
+</body>
+</html>
